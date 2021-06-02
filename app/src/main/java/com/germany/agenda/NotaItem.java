@@ -1,16 +1,23 @@
 package com.germany.agenda;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
+
 public class NotaItem implements Serializable {
+ enum Tipo{
+     URGENTE,
+     IMPORTANTE,
+     NORMAL
+    }
     private int imageResource;
     private String actividad;
-    private Date fecha;
-    private String tipoActividad;
+    private Calendar fecha;
+    private Tipo tipoActividad;
 
 
-    public NotaItem(int imageResource, String actividad, Date fecha, String tipoActividad) {
+    public NotaItem(int imageResource, String actividad, Calendar fecha, Tipo tipoActividad) {
         this.imageResource = imageResource;
         this.actividad = actividad;
         this.fecha = fecha;
@@ -33,19 +40,19 @@ public class NotaItem implements Serializable {
         this.actividad = actividad;
     }
 
-    public Date getFecha() {
+    public Calendar getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Calendar fecha) {
         this.fecha = fecha;
     }
 
-    public String getTipoActividad() {
+    public Tipo getTipoActividad() {
         return tipoActividad;
     }
 
-    public void setTipoActividad(String tipoActividad) {
+    public void setTipoActividad(Tipo tipoActividad) {
         this.tipoActividad = tipoActividad;
     }
 
@@ -60,9 +67,9 @@ public class NotaItem implements Serializable {
     }
 
     public  String getfechaString(){
-        int dia = fecha.getDay() ;
-        int mes = fecha.getMonth();
-        int anio = fecha.getYear();
+        int dia = fecha.get(Calendar.DAY_OF_MONTH) ;
+        int mes = fecha.get(Calendar.MONTH);
+        int anio = fecha.get(Calendar.YEAR);
         String obtenerFecha = dia+"-"+mes+"-"+anio;
         return   obtenerFecha;
     }

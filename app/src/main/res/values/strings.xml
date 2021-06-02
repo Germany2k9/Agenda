@@ -11,6 +11,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="agenda_actividades">Agenda de Actividades</string>
     <string name="crearNota">Nueva Nota</string>
+    <string name="acercaApp">Acerca De la App</string>
+    <string name="help">Help</string>
 
     <string-array name="levels_array">
         <item>Urgente</item>
@@ -18,4 +20,7 @@
         <item>Normal</item>
 
     </string-array>
+    <string name="coger_fecha">Date: </string>
+    <string name="Cancel">Cancelar</string>
+    <string name="btncrearNota">Crear Nota</string>
 </resources>

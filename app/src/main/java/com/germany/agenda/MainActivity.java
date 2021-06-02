@@ -1,5 +1,6 @@
 package com.germany.agenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,15 +15,17 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> listaActividades;
+
+
     private RecyclerView listasRecicler;
-//    private PalabraAdapter adapter;
+    private ListAdapter adapter;
 
 
 
@@ -33,17 +36,34 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+         listasRecicler = findViewById(R.id.idRecyclerView);
+//         adapter = findViewById(R.id.adapter);
+//        GestionFicheros.leerDatos(this);
+        adapter = new ListAdapter(ListaDatos.listaNotas, this);
+        listasRecicler.setAdapter(adapter);
+        listasRecicler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                    Intent crearNota = new Intent( MainActivity.this, crearNota.class);
+                    startActivity(crearNota);
+
             }
         });
 
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this );
-//        nombreDeLaVista.setLayoutManager(linearLayoutManager);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
